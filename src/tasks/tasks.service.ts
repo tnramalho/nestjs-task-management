@@ -17,33 +17,11 @@ export class TasksService {
     ){
 
     }
-    //private tasks: Task[] = [];
-
+    
     async getTasks(filterDto: GetTaskFilterDto ,  user:User ): Promise<Task[]> {
         return this.taskRepository.getTasks(filterDto, user);
     }
 
-    // getTasksWithFilter(dto : GetTaskFilterDto): Task[] {
-    //     const { status, search } = dto;
-        
-    //     let newTasks = this.getAllTasks();
-
-    //     if (status){
-    //         newTasks =  newTasks.filter(task => 
-    //              task.status === status
-    //         );
-    //     }
-
-    //     if(search) {
-    //         newTasks = newTasks.filter(task => 
-    //              task.title.includes(search) || 
-    //                     task.description.includes(search) 
-    //         );
-    //     }
-
-    //     return newTasks;
-    // }
-    
     async getTaskById (id:number) : Promise<Task> {
         const found = await this.taskRepository.findOne(id);
 
