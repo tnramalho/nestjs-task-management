@@ -10,15 +10,16 @@ import { GetUser } from 'src/auth/get-user-decorator';
 import { User } from 'src/auth/user.entity';
 
 @Controller('tasks')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class TasksController {
     constructor(private tasksService:TasksService){ }
 
-    @Get()
+    @Get() 
     async getTaks(
         @Query(ValidationPipe) filterDto: GetTaskFilterDto,
         @GetUser() user:User
         ) : Promise<Task[]> {
+            user = new User();
         return await this.tasksService.getTasks(filterDto, user);
     }
 
